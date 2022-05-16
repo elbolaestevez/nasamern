@@ -10,11 +10,14 @@ import axios from "axios";
 function Listado() {
   const { landings, set } = useContext(landingsContext);
   const [inputname, setSearchName] = useState(null);
+  const [selectedFilter, setSelectedFilter] = useState(null);
+
   let [page, setPage] = useState(1);
   const PER_PAGE = 24;
 
   const count = Math.ceil(landings.length / PER_PAGE);
   const _DATA = usePagination(landings, PER_PAGE);
+
 
   const handleChange = (e, p) => {
     setPage(p);
@@ -30,21 +33,21 @@ function Listado() {
     const sortedData = landings.sort((a,b)=>{
       return a.name > b.name ? 1: -1
     })
-    set(sortedData)
+    setSelectedFilter(sortedData)
     
    
    
   } 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    if(e.target.nombre.value){
-      setSearchName(e.target.nombre.value)
-        console.log("llega masa",e.target.nombre.value); 
-    }}
-  useEffect(() => {
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   if(e.target.nombre.value){
+  //     setSearchName(e.target.nombre.value)
+  //       console.log("llega masa",e.target.nombre.value); 
+  //   }}
+  // useEffect(() => {
     
    
-  }, [landings]);
+  // }, [landings]);
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -82,10 +85,10 @@ function Listado() {
   return (
     <div className="list">
       <button onClick={handleSort} variant="outlined">Sort</button>
-      <form className="row" onSubmit={onSubmit}>
+      {/* <form className="row" onSubmit={onSubmit}>
           <input placeholder="Buscar por nombre" name="nombre" />
           <input type="submit" ></input>
-      </form>
+      </form> */}
        <Pagination
         count={count}
         size="large"

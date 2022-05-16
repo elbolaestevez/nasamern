@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 function CardNeas(props) {
-const neasdata=props.neadata
+
+const neasdata = props.neadata
 
   const removeNeas = async () =>{
     try {
