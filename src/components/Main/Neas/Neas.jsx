@@ -2,12 +2,16 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { neasContext } from "../../../context/neascontext";
 import CardNeas from "./CardNeas/CardNeas";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
 
 const Neas = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [dataneas, setSearch] = useState([]);
   const [datainput, setInput] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState(null);
+  const [run, setrun] = useState(null);
 
   /*   const { neas, save } = useContext(neasContext); */
 
@@ -56,7 +60,7 @@ const Neas = () => {
   const handleSortYeardesc = () => setSelectedFilter('sortYeardesc')
   const handleSortOrbit = () => setSelectedFilter('sortOrbit');
   const handleSortOrbitdesc = () => setSelectedFilter('sortOrbitdesc');
-  const handleClearFilters = () => setSelectedFilter(null)
+  // const handleClearFilters = () => setrun("hola")
 
 
   const onSubmit = (e) => {
@@ -93,31 +97,35 @@ const Neas = () => {
 
 
     
-    <div className="list">
-      <button onClick={handleSortDesignation} variant="outlined">
+    <div className="listaneas">
+      <div>
+    
+      <Button variant="contained" onClick={handleSortDesignation} color="success">
         Sort by A-Z Designation
-      </button>
-      <button onClick={handleSortDesignationdesc} variant="outlined">
+      </Button>
+     
+      <Button variant="contained" onClick={handleSortDesignationdesc} color="success">
         Sort by Z-A Designation
-      </button>
-      <button onClick={handleSortYear} variant="outlined">
+      </Button>
+      <Button variant="contained" onClick={handleSortYear} color="success">
         Sort by A-Z Year
-      </button>
-      <button onClick={handleSortYeardesc} variant="outlined">
+      </Button>
+      <Button variant="contained" onClick={handleSortYeardesc} color="success">
         Sort by Z-A Year
-      </button>
-      <button onClick={handleSortOrbit} variant="outlined">
+      </Button>
+      <Button variant="contained" onClick={handleSortOrbit} color="success">
         Sort by A-Z orbit
-      </button>
-      <button onClick={handleSortOrbitdesc} variant="outlined">
+      </Button>
+      <Button variant="contained" onClick={handleSortOrbitdesc} color="success">
         Sort by Z-A orbit
-      </button>
-      <button onClick={handleClearFilters} variant="outlined">
+      </Button>
+      {/* <Button variant="contained" onClick={handleClearFilters} color="success">
         No Sort Method
-      </button>
+      </Button> */}
+      </div>
       <form className="row" onSubmit={onSubmit}>
       <input placeholder="Buscar por nombre" name="nombre" />
-      <input type="submit" ></input>
+      <Button variant="contained" endIcon={<SendIcon />} type="submit" ></Button>
     </form>
 
       <>

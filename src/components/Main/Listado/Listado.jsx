@@ -5,6 +5,8 @@ import CardLanding from "./CardLanding/CardLanding"
 import { landingsContext } from "../../../context/landingscontext";
 import usePagination from "../../../hooks/paginate";
 import axios from "axios";
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
 
 
 function Listado() {
@@ -82,14 +84,14 @@ function Listado() {
   console.log(landings);
  
   return (
-    <div className="list">
+    <div className="lista">
       <div className="titulo">
-      <button onClick={handleSort} variant="outlined">Sort A-Z name</button>
+      <Button variant="contained" onClick={handleSort} color="success">Sort A-Z name</Button>
       {/* <button onClick={handleSortdate} variant="outlined">Sort A-Z date</button>
       <button onClick={handleSortmass} variant="outlined">Sort A-Z mass</button> */}
       <form className="row" onSubmit={onSubmit}>
           <input placeholder="Buscar por nombre" name="nombre" />
-          <input type="submit" ></input>
+          <Button variant="contained" endIcon={<SendIcon />} type="submit" ></Button>
       </form>
       
        <Pagination

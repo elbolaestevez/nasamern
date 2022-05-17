@@ -6,6 +6,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Typography from '@mui/material/Typography';
 import { landingsContext } from "../../../../context/landingscontext";
 import { useNavigate } from "react-router-dom";
@@ -41,7 +42,7 @@ import { useNavigate } from "react-router-dom";
         component="img"
         alt="green iguana"
         height="140"
-        image="https://media.istockphoto.com/photos/comet-an-asteroid-a-meteorite-falls-to-the-ground-against-a-starry-picture-id1073058750?k=20&m=1073058750&s=612x612&w=0&h=M1yx0G5R-5vBaXWmEcVIFMgJVR6ZVDiLGkoVDATlL0Y="
+        image="https://media.istockphoto.com/photos/earth-in-a-meteor-shower-picture-id164922924?s=612x612"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -56,10 +57,10 @@ import { useNavigate } from "react-router-dom";
                 </Typography>
                 </CardContent>
               <CardActions>
-                <button onClick={removeLanding}>Delete</button>
+              <Button variant="outlined" startIcon={<DeleteIcon />} onClick={removeLanding}>Delete</Button>
                 
                 {/* <button onClick={favouritelanding}>Add Favourite</button> */}
-                <button><Link to={`/editlanding/${landing._id}`}>Update</Link></button>
+                <Button color="secondary"><Link to={`/editlanding/${landing._id}`}>Update</Link></Button>
                 </CardActions>
                 </Card>
                 

@@ -6,6 +6,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/material/Button';
 
 function CardNeas(props) {
 
@@ -26,7 +28,7 @@ const neasdata = props.neadata
   //otra forma es poner props entre parentesis en cards y luego poner copiar ruta del name
   //props.poke[0].name
   return (
-    <div className="pokemon-card">
+    <div className="card">
         <Card sx={{ maxWidth: 1000 }}>
         <CardMedia
         component="img"
@@ -48,8 +50,8 @@ const neasdata = props.neadata
         </Typography>
         </CardContent>
         <CardActions>
-        <button onClick={removeNeas}>Delete</button>
-        <button><Link to={`/editneas/${neasdata.designation}`}>Update</Link></button>
+        <Button variant="outlined" startIcon={<DeleteIcon />} onClick={removeNeas}>Delete</Button>
+        <Button color="secondary"><Link to={`/editneas/${neasdata.designation}`}>Update</Link></Button>
         </CardActions>
         </Card>
       </div>
