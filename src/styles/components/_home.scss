@@ -1,0 +1,38 @@
+@import '../utils/variables.scss';
+
+.home{
+    width: 100%;
+    height: 590px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    position: static;
+    object-fit:fill;
+    & > .title{
+        position: absolute;
+        color: rgb(255, 255, 255);
+        font-family: $font-1;
+        font-size: 70px;
+    }
+    & > .img{
+        width:100%;
+        height:100%;
+        // transition: transform 1s ease-in-out;
+        filter: blur(4px);
+        box-shadow: none;
+       
+        
+    
+    
+    }
+    & > p{
+        position: absolute;
+        color: rgb(255, 255, 255);
+        font-family: $font-1;
+        top: 50%;
+        margin-top: 3rem;
+        font-size: 20px;
+    }
+   
+
+}
