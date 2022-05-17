@@ -4,9 +4,11 @@
 
 .listaneas{
    
-        display: flex;
-        flex-direction: column;
-        align-items: center;  
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center; 
          
 }
 .card{
@@ -17,3 +19,7 @@
 .card:hover {
     box-shadow: 0 50px 50px 0 rgba(253, 245, 0, 0.2);
   }
+.busqueda{
+    display: flex;
+    flex-direction: column; 
+}

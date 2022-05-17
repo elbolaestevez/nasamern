@@ -12,6 +12,7 @@ function Nav() {
       <Link to="/neas">Neas</Link>
       <Link to="/listado">Listado</Link>
       <Link to="/newneas">Crear Neas</Link>
+      <Link to="/singnup">Crear Usuario</Link>
       {/* <Link to="/neas">NEAs</Link> */}
     </nav>
   );

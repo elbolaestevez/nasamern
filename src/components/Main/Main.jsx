@@ -4,7 +4,7 @@ import Neas from "./Neas/Neas";
 import Details from "./Details/Details";
 import Listado from "./Listado/Listado";
 import DetailLanding from "./Listado/CardLanding/DetailLanding/DetailLanding"
-
+import SignUp from "./SignUp/SignUp";
 import { Route, Routes } from "react-router-dom";
 import NewLanding from "./NewLanding/NewLanding";
 import Home from "./Home";
@@ -27,6 +27,7 @@ class Main extends Component {
           <Route element={<EditLanding />} path="/editlanding/:id" />
           <Route element={<EditNeas />} path="/editneas/:id" />
           <Route element={<NewNeas />} path="/newneas" />
+          <Route element={<SignUp />} path="/singnup" />
 
         </Routes>
         {/* <Neas /> */}

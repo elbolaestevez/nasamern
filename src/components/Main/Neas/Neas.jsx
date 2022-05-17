@@ -5,6 +5,8 @@ import CardNeas from "./CardNeas/CardNeas";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Neas = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,6 +14,7 @@ const Neas = () => {
   const [datainput, setInput] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState(null);
   const [run, setrun] = useState(null);
+  let navigate = useNavigate();
 
   /*   const { neas, save } = useContext(neasContext); */
 
@@ -24,12 +27,12 @@ const Neas = () => {
           `http://localhost:5000/api/astronomy/neas/dates?1900`
         );
         const data = await resp.data;
-        const dataSliced = data.slice(0, 10);
-        console.log("meteorito", dataSliced);
+        // const dataSliced = data.slice(0, 10);
+        // console.log("meteorito", dataSliced);
         // save([
         //   ...neas,
         //   dataSliced])
-        setSearch(dataSliced);
+        setSearch(data);
       } catch (error) {
         console.log(error);
       }
@@ -60,7 +63,7 @@ const Neas = () => {
   const handleSortYeardesc = () => setSelectedFilter('sortYeardesc')
   const handleSortOrbit = () => setSelectedFilter('sortOrbit');
   const handleSortOrbitdesc = () => setSelectedFilter('sortOrbitdesc');
-  // const handleClearFilters = () => setrun("hola")
+ 
 
 
   const onSubmit = (e) => {
@@ -68,7 +71,15 @@ const Neas = () => {
     if(e.target.nombre.value){
       setInput(e.target.nombre.value)
         console.log("llega designation",e.target.nombre.value); 
-    }}
+    }
+    e.target.reset()
+  }
+    const handleClearFilters = (e) => {
+   
+    // navigate("../neas", { replace: true });
+    // window.location.reload(false);
+   
+      }
 
 
   useEffect(() => {
@@ -83,6 +94,7 @@ const Neas = () => {
           console.log(error);
         }}
         fetchData();
+        
          
           
          
@@ -119,14 +131,16 @@ const Neas = () => {
       <Button variant="contained" onClick={handleSortOrbitdesc} color="success">
         Sort by Z-A orbit
       </Button>
-      {/* <Button variant="contained" onClick={handleClearFilters} color="success">
-        No Sort Method
-      </Button> */}
+      <Button variant="contained" onClick={handleClearFilters} color="success">
+       Volver al listado inicial
+      </Button>
       </div>
+      <div className="busqueda">
       <form className="row" onSubmit={onSubmit}>
       <input placeholder="Buscar por nombre" name="nombre" />
       <Button variant="contained" endIcon={<SendIcon />} type="submit" ></Button>
     </form>
+    </div>
 
       <>
         {selectedFilter

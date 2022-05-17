@@ -25,13 +25,14 @@ const Landings = () => {
     e.preventDefault();
     if(e.target.nombre.value){
     setSearchMass(e.target.nombre.value)
-      console.log("llega masa",e.target.nombre.value); 
+    setMinMass("")
                    }
     else if(e.target.nombreclase.value){
       
      setSearchMass(e.target.nombreclase.value)
       setValue(e.target.nombreclase.value)
       console.log("clase",e.target.nombreclase.value);
+      setMinMass("")
 
     }
     else{
@@ -42,6 +43,7 @@ const Landings = () => {
         setSearchMass("")
     }
     e.target.reset()
+
   };
  
 
@@ -91,7 +93,7 @@ useEffect(() => {
           set(dataSliced)
 
       }
-      else if(minmass){
+      else if(minmass>1){
         //  console.log(inputmass);
         const resp = await axios.get(
           `http://localhost:5000/api/astronomy/landings?minimum_mass=${minmass}`)
@@ -101,6 +103,7 @@ useEffect(() => {
          
           setMass(dataSliced)
           set(dataSliced)
+          
 
       }
       else {
@@ -108,14 +111,14 @@ useEffect(() => {
           `http://localhost:5000/api/astronomy/landings?minimum_mass=0`
         );
         const data = await resp.data;
-        const dataSliced = data.slice(0,100);
-        console.log("meteorito",dataSliced);
+        // const dataSliced = data.slice(0,100);
+        // console.log("meteorito",dataSliced);
         // set([
         //   ...landings,
         //   dataSliced])
         // setValue(dataSliced);
-        setMass(dataSliced)
-        set(dataSliced)
+        setMass(data)
+        set(data)
         
 
       }
@@ -145,10 +148,18 @@ return(
           <input placeholder="Buscar Clase" name="nombreclase" />
           <label for="quantity">Seleccione la masa minima</label>
           <select id="quantity" name="selection">
+              <option value="0">0 </option>
               <option value="100">100 </option>
               <option value="200">200</option>
               <option value="500">500</option>
               <option value="1000">1000</option>
+              <option value="2000">2000</option>
+              <option value="5000">5000</option>
+              <option value="10000">10000</option>
+              <option value="20000">20000</option>
+             
+              <option value="100000">100000</option>
+              <option value="400000">400000</option>
           </select>
           <input type="submit" >
           </input>
