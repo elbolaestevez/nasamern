@@ -70,7 +70,7 @@ function NewNeas() {
     <div id="box">
       <form className="formNew" onSubmit={handleSubmit(onSubmit) }>
         <div>
-          <h1>Crea tu Landing</h1>
+          <h1>Crea tu Neas</h1>
           <label>designation</label>
           <input {...register("designation", { minLength: 3 })} />
           {errors.designation && <p>{errors.designation}</p>}

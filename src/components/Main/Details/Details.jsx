@@ -5,6 +5,7 @@ import axios from "axios";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import CardMedia from '@mui/material/CardMedia';
 
 import Typography from "@mui/material/Typography";
 
@@ -40,10 +41,14 @@ const Details = () => {
       <div className="detailcs">
         <>
         {detailnea.map((data, index) =>
-          <Card sx={{ maxWidth: 345 }}>
-            
-
-            <CardContent>
+          <Card sx={{ maxWidth: 1600 }}>
+          <CardMedia
+          component="img"
+          alt="green iguana"
+          height="140"
+          image="https://media.istockphoto.com/photos/comet-an-asteroid-a-meteorite-falls-to-the-ground-against-a-starry-picture-id1073058750?k=20&m=1073058750&s=612x612&w=0&h=M1yx0G5R-5vBaXWmEcVIFMgJVR6ZVDiLGkoVDATlL0Y="
+        />
+        <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 Nombre y id: {data.designation}
               </Typography>

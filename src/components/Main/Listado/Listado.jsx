@@ -9,8 +9,9 @@ import axios from "axios";
 
 function Listado() {
   const { landings, set } = useContext(landingsContext);
-  const [inputname, setSearchName] = useState(null);
-  const [selectedFilter, setSelectedFilter] = useState(null);
+  const [inputname, setSearchName] = useState([]);
+  const [selectedFilterr, setSelectedFilterr] = useState(null);
+  
 
   let [page, setPage] = useState(1);
   const PER_PAGE = 24;
@@ -33,44 +34,42 @@ function Listado() {
     const sortedData = landings.sort((a,b)=>{
       return a.name > b.name ? 1: -1
     })
-    setSelectedFilter(sortedData)
     
-   
-   
+    setSelectedFilterr(sortedData)
   } 
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   if(e.target.nombre.value){
-  //     setSearchName(e.target.nombre.value)
-  //       console.log("llega masa",e.target.nombre.value); 
-  //   }}
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if(e.target.nombre.value){
+      setSearchName(e.target.nombre.value)
+        console.log("llega masa",e.target.nombre.value); 
+    }}
   // useEffect(() => {
     
    
   // }, [landings]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
         
   
        
         
         
-  //       const resp = await axios.get(
-  //         `http://localhost:5000/api/astronomy/landings/name/${inputname}`)
-  //         const data = await resp.data;
-  //         set(data)
+        const resp = await axios.get(
+          `http://localhost:5000/api/astronomy/landings/name/${inputname}`)
+          const data = await resp.data;
+          set(data)
        
          
-  //       }catch (error) {
-  //         console.log(error);
-  //       }}
-  //       fetchData();
+        }catch (error) {
+          console.log(error);
+        }}
+        fetchData();
          
           
          
-  //       },[inputname])
+        },[inputname])
 
   // const onSubmit = (e) => {
 
@@ -84,11 +83,15 @@ function Listado() {
  
   return (
     <div className="list">
-      <button onClick={handleSort} variant="outlined">Sort</button>
-      {/* <form className="row" onSubmit={onSubmit}>
+      <div className="titulo">
+      <button onClick={handleSort} variant="outlined">Sort A-Z name</button>
+      {/* <button onClick={handleSortdate} variant="outlined">Sort A-Z date</button>
+      <button onClick={handleSortmass} variant="outlined">Sort A-Z mass</button> */}
+      <form className="row" onSubmit={onSubmit}>
           <input placeholder="Buscar por nombre" name="nombre" />
           <input type="submit" ></input>
-      </form> */}
+      </form>
+      
        <Pagination
         count={count}
         size="large"
@@ -97,12 +100,13 @@ function Listado() {
         shape="rounded"
         onChange={handleChange}
       />
+      </div>
      
-      <>
+      <div className="listado">
         {landings.length !== 0
           ? _DATA.currentData().map((landing, i) => <CardLanding key={i} objlanding={landing} remove={()=>removeLanding(i)}  />)
           : ""}
-      </>
+      </div>
     </div>
   );
 }

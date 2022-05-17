@@ -35,7 +35,7 @@ import { useNavigate } from "react-router-dom";
 
   
   return (
-    <div className="pokemon-card">
+    <div className="card">
         <Card sx={{ maxWidth: 1000 }}>
         <CardMedia
         component="img"

@@ -14,6 +14,7 @@ const Neas = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
+      
       try {
         const resp = await axios.get(
           `http://localhost:5000/api/astronomy/neas/dates?1900`
@@ -49,7 +50,7 @@ const Neas = () => {
   }
 
 
-  const handleSortDesignation = () => setSelectedFilter('sortDesignation')
+  const handleSortDesignation = () => setSelectedFilter("sortDesignation")
   const handleSortDesignationdesc = () => setSelectedFilter('sortDesignationdesc')
   const handleSortYear = () => setSelectedFilter('sortYear')
   const handleSortYeardesc = () => setSelectedFilter('sortYeardesc')
