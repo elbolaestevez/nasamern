@@ -165,7 +165,7 @@ return(
           </input>
         </form>
        
-        <div className="lista">
+        <div className="listamap">
       <MapContainer center={[51.505, -0.09]} zoom={5}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

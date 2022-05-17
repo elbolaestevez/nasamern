@@ -17,14 +17,7 @@ const SignupSchema = yup.object().shape({
 function Login() {
 
   let navigate = useNavigate();
-  // if (result.status === 'ok') {
-  //   // everythign went fine
-  //   console.log('Got the token: ', result.data)
-  //   localStorage.setItem('token', result.data)
-  //   alert('Success')
-  // } else {
-  //   alert(result.error)
-  // }
+
 
 
   const {
@@ -36,12 +29,25 @@ function Login() {
   });
   const onSubmit = async (data) => {
     console.log(data);
-    alert(JSON.stringify(data));
     
-   
+    
+    try {
   const res = await axios.post(`http://localhost:5000/api/astronomy/user/login`,data);
-   
-  };
+   if (res.status === 200) {
+  
+    console.log(res);
+    localStorage.setItem('token', res.data)
+    alert('Success')
+ 
+  } }
+  catch (err) {
+  alert("Failed");
+  }
+
+
+
+
+  ;}
 
   return (
     <div id="Form">
